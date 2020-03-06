@@ -25,3 +25,12 @@ do
 	arr[$array]=${dict[$array]}
 done
 dictionaryValuesInArray=${arr[@]}
+
+# Function to get results in descending order
+function descendingOrder () {
+	for value in $@
+	do
+		echo $value
+	done | sort -r
+}
+descendingOrder $dictionaryValuesInArray
