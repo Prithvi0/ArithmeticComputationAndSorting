@@ -1,13 +1,20 @@
 #!/bin/bash -x
+declare -A dict
+
 echo "Welcome to Arithmetic Computation and Sorting"
 
 # Taking three inputs
-read -p "Enter number a: " a
-read -p "Enter number b: " b
-read -p "Enter number c: " c
+read -p "Enter numbers a, b and c: " a b c
 
-# Computing all Arithmetic Operations
-Operation1=`expr "scale=2;$a+(($b*$c))" | bc`
-Operation2=`expr "scale=2;(($a*$b))+$c" | bc`
-Operation3=`expr "scale=2;$c+(($a/$b))" | bc`
-Operation4=`expr "scale=2;(($a%$b))+$c" | bc`
+count=0
+# Function to store all the Arithmetic computations in a dictionary
+function ArithmeticComputations () {
+argument=$1
+dict[$((count++))]=$argument
+}
+
+# Calling all Arithmetic Operations in a function
+ArithmeticComputations `expr "scale=2;$a+(($b*$c))" | bc`
+ArithmeticComputations `expr "scale=2;(($a*$b))+$c" | bc`
+ArithmeticComputations `expr "scale=2;$c+(($a/$b))" | bc`
+ArithmeticComputations `expr "scale=2;(($a%$b))+$c" | bc`
