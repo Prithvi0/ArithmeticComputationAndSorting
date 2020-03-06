@@ -26,11 +26,13 @@ do
 done
 dictionaryValuesInArray=${arr[@]}
 
-# Function to get results in descending order
-function descendingOrder () {
+# Function to get results in descending and ascending order
+function descendingAscendingOrder () {
 	for value in $@
 	do
 		echo $value
 	done | sort -r
 }
-descendingOrder $dictionaryValuesInArray
+descendingAscendingOrder $dictionaryValuesInArray		# Descending values
+descendingAscendingOrder $dictionaryValuesInArray | sort -n	# Ascending values
+
